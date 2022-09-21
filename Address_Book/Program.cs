@@ -253,8 +253,6 @@ namespace Address_Book
             {
                 Console.WriteLine("The state {0} have {1} contacts", kvp.Key, kvp.Value.Count);
             }
-
         }
-
     }
 }

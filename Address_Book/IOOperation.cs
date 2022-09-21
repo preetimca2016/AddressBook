@@ -1,18 +1,24 @@
-﻿using CsvHelper;
+﻿using Address_Book;
+using CsvHelper;
 using CsvHelper.Configuration;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Formats.Asn1;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
-namespace Address_Book
+using JsonSerializer = Newtonsoft.Json.JsonSerializer;
+
+namespace AddressBookSystem
 {
     class IOOperation
     {
-        const string filepath = @"D:\LFP-183\Practice\AddressBook\Address_Book\AddressBook.csv";
+        const string filepath = @"E:\Bridgelabz\Address_Book_System\Address_Book_System\AddressBook.txt";
         public static List<string> list;
+        private static object records;
 
         //file writes the addressbook in a file
         public static void GetDictionary(Dictionary<string, List<NewMember>> addressbooknames)
@@ -56,7 +62,7 @@ namespace Address_Book
         //writes to csv
         public static void CSVOperations(Dictionary<string, List<NewMember>> addressbooknames)
         {
-            string export = @"D:\LFP-183\Practice\AddressBook\Address_Book\AddressBook.csv";
+            string export = @"E:\Bridgelabz\Address_Book_System\Address_Book_System\AddressBook.csv";
 
             foreach (KeyValuePair<string, List<NewMember>> kvp in addressbooknames)
             {
@@ -64,26 +70,22 @@ namespace Address_Book
                 var config = new CsvConfiguration(System.Globalization.CultureInfo.InvariantCulture);
                 foreach (var mem in kvp.Value)
                 {
-                    List<NewMember> list = new List<NewMember>();
-                    list.Add(mem);
+                    List<NewMember> list1 = new List<NewMember>();
+                    list1.Add(mem);
                     //Opening file open with append mode
                     using (var stream = File.Open(export, FileMode.Append))
                     using (var writer = new StreamWriter(stream))
                     using (var csvWriter = new CsvWriter(writer, config))
                     {
                         //writes the data next row
-                        csvWriter.WriteRecords(list);
+                        csvWriter.WriteRecords(list1);
                     }
                     //header config for not printing
                     config = new CsvConfiguration(System.Globalization.CultureInfo.InvariantCulture)
                     {
                         HasHeaderRecord = false,
                     };
-
                 }
-
-
-
             }
             //Reads from CSV
             using (var reader = new StreamReader(export))
@@ -99,10 +101,30 @@ namespace Address_Book
                     }
                     Console.WriteLine(member.ToString());
                 }
-
             }
-
-
+            //Json serialze to add object to json file
+            string jsonFilepath = @"E:\Bridgelabz\Address_Book_System\Address_Book_System\AddressBook.json";
+            JsonSerializer serializer = new JsonSerializer();
+            List<NewMember> list = new List<NewMember>();
+            using (StreamWriter sw = new StreamWriter(jsonFilepath))
+            using (JsonWriter writer = new JsonTextWriter(sw))
+            {
+                //serializer to serialize to json
+                serializer.Serialize(writer, records);
+            }
+            Console.WriteLine("Written to JSON");
+            //Reading from json file
+            List<NewMember> json = JsonConvert.DeserializeObject<List<NewMember>>(File.ReadAllText(jsonFilepath));
+            foreach (var member in json)
+            {
+                //To remove header in Json file
+                if (member.FirstName == "firstname")
+                {
+                    Console.WriteLine(" ");
+                    continue;
+                }
+                Console.WriteLine(member.ToString());
+            }
 
         }
     }

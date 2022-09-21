@@ -1,0 +1,23 @@
+﻿[
+  {
+    "AddressBookName": "Home",
+    "firstname": "Preeti",
+    "lastname": "Sharma",
+    "Address": "Nasibpur",
+    "City": "Narnaul",
+    "State": "Haryana",
+    "pincode": "122001",
+    "phonenumber": "89457847547",
+    "emailId": "pree@gmail.com"
+  },
+  {
+    "firstname": "Awesh",
+    "lastname": "choyal",
+    "Address": "GGN",
+    "City": "NNL",
+    "State": "HR",
+    "pincode": "12342",
+    "phonenumber": "455465867987",
+    "emailId": "ggn@gmail.com"
+  }
+]
