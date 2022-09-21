@@ -178,5 +178,19 @@ namespace Address_Book
                 }
             }
         }
+        public static void DisplayCount()
+        {
+            Console.WriteLine("The counts based on states and cities");
+            Console.WriteLine("Group by city");
+            foreach (KeyValuePair<string, List<NewMember>> kvp in cities)
+            {
+                Console.WriteLine("The city {0} have {1} contacts", kvp.Key, kvp.Value.Count);
+            }
+            Console.WriteLine("Group by state");
+            foreach (KeyValuePair<string, List<NewMember>> kvp in states)
+            {
+                Console.WriteLine("The state {0} have {1} contacts", kvp.Key, kvp.Value.Count);
+            }
+        }
     }
 }

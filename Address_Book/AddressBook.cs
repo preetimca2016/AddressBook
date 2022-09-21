@@ -9,7 +9,6 @@ namespace Address_Book
     class AddressBook
     {
         public List<NewMember> contactList;
-
         public AddressBook()
         {
             contactList = new List<NewMember>();
