@@ -49,5 +49,9 @@ namespace Address_Book
             get;
             set;
         }
+        public override string ToString()
+        {
+            return "Name: " + this.FirstName + this.LastName + " ,Address: " + this.Address + "  ,City: " + this.City + " ,State: " + this.State + " ,Pincode: " + this.PinCode + " ,phonenumber: " + this.PhoneNumber + " ,emailId: " + this.EmailId;
+        }
     }
 }
