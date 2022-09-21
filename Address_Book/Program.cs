@@ -6,7 +6,7 @@
         {
             Console.WriteLine("Welcome to Address Book System!");
             while (true)
-            {
+            {   //given inputs
                 Console.WriteLine("Enter an Option:");
                 Console.WriteLine("Enter 1 to Add a Member in a contact list:");
                 Console.WriteLine("Enter 2 to Print the Member in contact list:");

@@ -8,6 +8,7 @@ namespace Address_Book
 {
     class NewMember
     {
+        //getter and setter property
         public string FirstName
         {
             get;

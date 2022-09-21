@@ -8,6 +8,7 @@ namespace Address_Book
 {
     class AddressBook
     {
+        //create list to add contacts
         public static List<NewMember> contactList = new List<NewMember>();
         public static void AddaPerson()
         {
