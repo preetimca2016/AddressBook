@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace Address_Book
-{
+{ 
     class Program
     {
         //Declared Dictionary
@@ -63,7 +63,6 @@ namespace Address_Book
                 }
                 else
                 {
-
                     ///adding details to the dictionary
                     addressbooknames.Add(addressbookname, addressBook.contactList);
                 }
@@ -71,6 +70,7 @@ namespace Address_Book
             }
             Console.WriteLine("Enter 1 to search the contacts based on city name and state");
             Console.WriteLine("Enter 2 to print contact list based on city name and states");
+            Console.WriteLine("Enter 3 to print contact list based on sorting contacts");
             string options = Console.ReadLine();
             if (options == "1")
             {
@@ -148,7 +148,6 @@ namespace Address_Book
                                     Program program = new Program();
                                     statename.Add(member);
                                     states.Add(member.State.ToLower(), statename);
-
                                 }
                             }
                         }
@@ -161,6 +160,32 @@ namespace Address_Book
                 PrintDictionaries(cities, "City");
                 Console.WriteLine("   ");
                 PrintDictionaries(states, "States");
+                DisplayCount();
+            }
+            else if (options == "3")
+            {
+                AddressBook addressBook = new AddressBook();
+                Console.WriteLine("Enter 1 to sort based on firstname");
+                Console.WriteLine("Enter 2 to sort based on cityname");
+                Console.WriteLine("Enter 3 to sort based on statename");
+                Console.WriteLine("Enter 4 to sort based on PinCode");
+                string option = Console.ReadLine();
+                if (option == "1")
+                {
+                    addressBook.SortBasedOnNames(addressbooknames);
+                }
+                else if (option == "2")
+                {
+                    addressBook.SortBasedOnCityName(addressbooknames);
+                }
+                else if (option == "3")
+                {
+                    addressBook.SortBasedOnStateName(addressbooknames);
+                }
+                else if (option == "4")
+                {
+                    addressBook.SortBasedOnPinCode(addressbooknames);
+                }
             }
         }
         //print state and country dictionaries

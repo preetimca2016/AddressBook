@@ -179,6 +179,71 @@ namespace Address_Book
                 Console.WriteLine("No contacts present");
             }
         }
+        //Sort using generics sortedList
+        public void SortBasedOnNames(Dictionary<string, List<NewMember>> addressbooknames)
+        {
+            foreach (KeyValuePair<string, List<NewMember>> kvp in addressbooknames)
+            {
+                Console.WriteLine("The contacts sorted based on first name in address book {0}", kvp.Key);
+                List<NewMember> newMembers = new List<NewMember>();
+                foreach (var member in kvp.Value)
+                {
+                    newMembers.Add(member);
+                }
+                List<NewMember> members = newMembers.OrderBy(x => x.FirstName).ToList();
+                foreach (var mem in members)
+                    Console.WriteLine(mem.ToString());
+            }
+        }
+        //sorts based on city name
+        public void SortBasedOnCityName(Dictionary<string, List<NewMember>> addressbooknames)
+        {
+            foreach (KeyValuePair<string, List<NewMember>> kvp in addressbooknames)
+            {
+                Console.WriteLine("The contacts sorted based on city name in address book {0}", kvp.Key);
+                List<NewMember> newMembers = new List<NewMember>();
+                foreach (var member in kvp.Value)
+                {
+                    newMembers.Add(member);
+                }
+                List<NewMember> members = newMembers.OrderBy(x => x.City).ToList();
+                foreach (var mem in members)
+                    Console.WriteLine(mem.ToString());
+            }
+        }
+        //sorts based on state name
+        public void SortBasedOnStateName(Dictionary<string, List<NewMember>> addressbooknames)
+        {
+            foreach (KeyValuePair<string, List<NewMember>> kvp in addressbooknames)
+            {
+                Console.WriteLine("The contacts sorted based on state name in address book {0}", kvp.Key);
+                List<NewMember> newMembers = new List<NewMember>();
+                foreach (var member in kvp.Value)
+                {
+                    newMembers.Add(member);
+                }
+                List<NewMember> members = newMembers.OrderBy(x => x.State).ToList();
+                foreach (var mem in members)
+                    Console.WriteLine(mem.ToString());
+            }
+        }
+        //sorts based on pincode
+        public void SortBasedOnPinCode(Dictionary<string, List<NewMember>> addressbooknames)
+        {
+            foreach (KeyValuePair<string, List<NewMember>> kvp in addressbooknames)
+            {
+                Console.WriteLine("The contacts sorted based on pincode in address book {0}", kvp.Key);
+                List<NewMember> newMembers = new List<NewMember>();
+                foreach (var member in kvp.Value)
+                {
+                    newMembers.Add(member);
+                }
+                List<NewMember> members = newMembers.OrderBy(x => x.PinCode).ToList();
+                foreach (var mem in members)
+                    Console.WriteLine(mem.ToString());
+
+            }
+        }
         public void ListContactPeople()
         {
             if (contactList.Count > 0)
