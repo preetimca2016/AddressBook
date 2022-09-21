@@ -1,5 +1,12 @@
-﻿using System;
+﻿using CsvHelper;
+using CsvHelper.Configuration;
+using System;
 using System.Collections.Generic;
+using System.Formats.Asn1;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Address_Book
 {
@@ -18,6 +25,7 @@ namespace Address_Book
         }
         static void Main(string[] args)
         {
+
             Console.WriteLine("Welcome to Address Book System!");
             Console.WriteLine("Enter the number of address books to be added to the system: ");
             int addressbooks = Convert.ToInt32(Console.ReadLine());
@@ -56,6 +64,8 @@ namespace Address_Book
                     Console.WriteLine(" ");
                     addressBook.ListContactPeople();
                 }
+
+
                 if (addressbooknames.ContainsKey(addressbookname))
                 {
                     Console.WriteLine("Existing address book name : {0} . Please retry!", addressbookname);
@@ -63,14 +73,19 @@ namespace Address_Book
                 }
                 else
                 {
+
                     ///adding details to the dictionary
                     addressbooknames.Add(addressbookname, addressBook.contactList);
                 }
+
+
                 noofbooksadded++;
             }
             Console.WriteLine("Enter 1 to search the contacts based on city name and state");
             Console.WriteLine("Enter 2 to print contact list based on city name and states");
             Console.WriteLine("Enter 3 to print contact list based on sorting contacts");
+            Console.WriteLine("Enter 4 to write contact list into the file");
+            Console.WriteLine("Enter 5 to read from a csv file");
             string options = Console.ReadLine();
             if (options == "1")
             {
@@ -106,22 +121,28 @@ namespace Address_Book
                                         if (key.Key.ToLower() == member.City.ToLower())
                                         {
                                             key.Value.Add(member);
+
                                         }
                                     }
+
                                 }
                                 else
                                 {
                                     Program program = new Program();
                                     cityname.Add(member);
                                     cities.Add(member.City.ToLower(), cityname);
+
                                 }
                             }
                         }
+
+
                     }
                     else
                     {
                         Console.WriteLine("No Contacts");
                     }
+
                 }
                 //uses lambda function to group by state and add it to the dictionary
                 foreach (KeyValuePair<string, List<NewMember>> kvp in addressbooknames)
@@ -140,17 +161,21 @@ namespace Address_Book
                                         if (key.Key.ToLower() == member.State.ToLower())
                                         {
                                             key.Value.Add(member);
+
                                         }
                                     }
+
                                 }
                                 else
                                 {
                                     Program program = new Program();
                                     statename.Add(member);
                                     states.Add(member.State.ToLower(), statename);
+
                                 }
                             }
                         }
+
                     }
                     else
                     {
@@ -186,6 +211,17 @@ namespace Address_Book
                 {
                     addressBook.SortBasedOnPinCode(addressbooknames);
                 }
+
+            }
+            else if (options == "4")
+            {
+                Console.WriteLine("Write to the file");
+                IOOperation.GetDictionary(addressbooknames);
+            }
+            else if (options == "5")
+            {
+                Console.WriteLine("Written to csv file");
+                IOOperation.CSVOperations(addressbooknames);
             }
         }
         //print state and country dictionaries
@@ -203,6 +239,7 @@ namespace Address_Book
                 }
             }
         }
+
         public static void DisplayCount()
         {
             Console.WriteLine("The counts based on states and cities");
@@ -216,6 +253,8 @@ namespace Address_Book
             {
                 Console.WriteLine("The state {0} have {1} contacts", kvp.Key, kvp.Value.Count);
             }
+
         }
+
     }
 }
