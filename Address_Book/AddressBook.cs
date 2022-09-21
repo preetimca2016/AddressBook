@@ -8,9 +8,9 @@ namespace Address_Book
 {
     class AddressBook
     {
-        //create list to add contacts
         public static List<NewMember> contactList = new List<NewMember>();
-        public static void AddaPerson()
+        /// Adds the person.
+        public  static void AddaPerson()
         {
             NewMember newMember = new NewMember();
             Console.Write("Enter First Name: ");
@@ -27,20 +27,24 @@ namespace Address_Book
             newMember.State = Console.ReadLine();
             Console.Write("Enter Pincode: ");
             newMember.PinCode = Console.ReadLine();
+            Console.Write("Enter Email Id: ");
+            newMember.EmailId = Console.ReadLine();
             contactList.Add(newMember);
-        }
+        }      
+        /// Prints the person.
         public static void PrintPerson(NewMember member)
         {
             Console.WriteLine("First Name: " + member.FirstName);
             Console.WriteLine("Last Name: " + member.LastName);
             Console.WriteLine("Phone Number: " + member.PhoneNumber);
-            Console.WriteLine("Address" + member.Address);
+            Console.WriteLine("Address " + member.Address);
             Console.WriteLine("City: " + member.City);
             Console.WriteLine("State: " + member.State);
             Console.WriteLine("Pincode: " + member.PinCode);
+            Console.WriteLine("Email Id: " + member.EmailId);
             Console.WriteLine("");
         }
-        // Modifies the details.        
+        /// Modifies the details.
         public static void Modify()
         {
             if (contactList.Count > 0)
@@ -61,7 +65,8 @@ namespace Address_Book
                             Console.WriteLine("Enter 5 to Change City ");
                             Console.WriteLine("Enter 6 to Change State ");
                             Console.WriteLine("Enter 7 to Change Pincode ");
-                            Console.WriteLine("Enter 8 to Exit ");
+                            Console.WriteLine("Enter 8 to Change Email Id ");
+                            Console.WriteLine("Enter 9 to Exit ");
                             int option = Convert.ToInt32(Console.ReadLine());
                             switch (option)
                             {
@@ -94,13 +99,13 @@ namespace Address_Book
                                     member.PinCode = Console.ReadLine();
                                     break;
                                 case 8:
+                                    Console.WriteLine("Enter the New Email Id: ");
+                                    member.EmailId = Console.ReadLine();
+                                    break;
+                                case 9:
                                     return;
                             }
                         }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Please enter the valid name!");
                     }
                 }
             }
@@ -108,50 +113,48 @@ namespace Address_Book
             {
                 Console.WriteLine("Your Address Book is empty!");
             }
-        }
-        // Delete the details.
-        public static void DeleteDetails()
-        {
-            if (contactList.Count > 0)
+            /// Deletes the details.        
+            public static void DeleteDetails()
             {
-                Console.WriteLine("Enter the first name of the person to be deleted:");
-                string target = Console.ReadLine();
-                foreach (var member in contactList)
+                if (contactList.Count > 0)
                 {
-                    if (member.FirstName.ToLower() == target.ToLower())
+                    Console.WriteLine("Enter the first name of the person to be deleted:");
+                    string target = Console.ReadLine();
+                    foreach (var member in contactList)
                     {
-                        contactList.Remove(member);
-                        Console.WriteLine("Deleted Contact : " + member.FirstName);
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Not Available.");
+                        if (member.FirstName.ToLower() == target.ToLower())
+                        {
+                            contactList.Remove(member);
+                            Console.WriteLine("Deleted Contact : " + member.FirstName);
+                            break;
+                        }
                     }
                 }
-            }
-            else
-            {
-                Console.WriteLine("Your Address book is empty!");
-            }
-        }
-        // Lists the contact people.
-        public static void ListContactPeople()
-        {
-            if (contactList.Count > 0)
-            {
-                Console.WriteLine("The Contact List : ");
-                foreach (var member in contactList)
+                else
                 {
-                    PrintPerson(member);
+                    Console.WriteLine("Your Address book is empty!");
                 }
             }
-            else
+            /// <summary>
+            /// Lists the contact people.
+            /// </summary>
+            public static void ListContactPeople()
             {
-                Console.WriteLine("Your address book is empty.");
-                return;
+                if (contactList.Count > 0)
+                {
+                    Console.WriteLine("The Contact List : ");
+                    foreach (var member in contactList)
+                    {
+                        PrintPerson(member);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Your address book is empty.");
+                    return;
+                }
             }
         }
     }
 }
- 
+

@@ -44,5 +44,10 @@ namespace Address_Book
             get;
             set;
         }
+        public string EmailId
+        {
+            get;
+            set;
+        }
     }
 }
