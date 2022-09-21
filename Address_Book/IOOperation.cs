@@ -62,7 +62,7 @@ namespace AddressBookSystem
         //writes to csv
         public static void CSVOperations(Dictionary<string, List<NewMember>> addressbooknames)
         {
-            string export = @"E:\Bridgelabz\Address_Book_System\Address_Book_System\AddressBook.csv";
+            string export = @"D:\LFP-183\Practice\AddressBook\Address_Book\AddressBook.csv";
 
             foreach (KeyValuePair<string, List<NewMember>> kvp in addressbooknames)
             {
@@ -103,7 +103,7 @@ namespace AddressBookSystem
                 }
             }
             //Json serialze to add object to json file
-            string jsonFilepath = @"E:\Bridgelabz\Address_Book_System\Address_Book_System\AddressBook.json";
+            string jsonFilepath = @"E:\Bridgelabz\Address_Book_System\Address_Book_System\AddressBookD:\LFP-183\Practice\AddressBook\Address_Book\AddressBook.json";
             JsonSerializer serializer = new JsonSerializer();
             List<NewMember> list = new List<NewMember>();
             using (StreamWriter sw = new StreamWriter(jsonFilepath))
