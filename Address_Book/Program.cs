@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace Address_Book
-{ 
+{
     class Program
     {
         //Declared Dictionary
@@ -147,7 +147,7 @@ namespace Address_Book
                                 {
                                     Program program = new Program();
                                     statename.Add(member);
-                                    states.Add(member.State.ToLower(), statename);
+                                    states.Add(member.State.ToLower(), statename)
                                 }
                             }
                         }

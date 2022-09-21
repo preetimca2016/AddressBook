@@ -241,7 +241,6 @@ namespace Address_Book
                 List<NewMember> members = newMembers.OrderBy(x => x.PinCode).ToList();
                 foreach (var mem in members)
                     Console.WriteLine(mem.ToString());
-
             }
         }
         public void ListContactPeople()
