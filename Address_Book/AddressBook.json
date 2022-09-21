@@ -1,0 +1,22 @@
+﻿[
+  {
+    "firstname": "sandeep",
+    "lastname": "singh",
+    "Address": "housingh board",
+    "City": "bhilai",
+    "State": "chattisgarh",
+    "pincode": "4900026",
+    "phonenumber": "7748860079",
+    "emailId": "sandy@gmail.com"
+  },
+
+  {
+    "firstname": "ahilesh",
+    "lastname": "singh",
+    "Address": "housingh board",
+    "City": "bhilai",
+    "State": "chattisgarh",
+    "pincode": "4900026",
+    "phonenumber": "7748860079",
+    "emailId": "sandy@gmail.com"
+  }

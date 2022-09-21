@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Address_Book
-{
-    class AddressBook
-    {
-    }
-}
+﻿﻿﻿﻿The address book name is: Employee
+Name: Abhay,Address: Indore,City: xyz,State: a ,Pincode: 1223 ,phonenumber: 54548060568,emailId: a
+Name: Rahul,Address: Banglore,City: abcb ,State: b ,Pincode: 123546,phonenumber: 56565454,emailId: b
+The address book name is: Agency
+Name: Rohan,Address: Bikaner,City: gc ,State: c ,Pincode: 45445,phonenumber: 54656643522,emailId: c
+Name: Geetika,Address: Patna,City: gvd ,State: d ,Pincode: 45435,phonenumber: 3454354,emailId: d
