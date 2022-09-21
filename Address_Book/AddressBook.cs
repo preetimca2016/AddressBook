@@ -109,6 +109,32 @@ namespace Address_Book
                 Console.WriteLine("Your Address Book is empty!");
             }
         }
+        // Delete the details.
+        public static void DeleteDetails()
+        {
+            if (contactList.Count > 0)
+            {
+                Console.WriteLine("Enter the first name of the person to be deleted:");
+                string target = Console.ReadLine();
+                foreach (var member in contactList)
+                {
+                    if (member.FirstName.ToLower() == target.ToLower())
+                    {
+                        contactList.Remove(member);
+                        Console.WriteLine("Deleted Contact : " + member.FirstName);
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Not Available.");
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Your Address book is empty!");
+            }
+        }
         // Lists the contact people.
         public static void ListContactPeople()
         {
