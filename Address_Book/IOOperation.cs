@@ -56,7 +56,7 @@ namespace Address_Book
         //writes to csv
         public static void CSVOperations(Dictionary<string, List<NewMember>> addressbooknames)
         {
-            string export = @"D:\LFP-183\Practice\AddressBook\Address_Book\AddressBook.csv";
+            string export = @"D:\LFP-183\Practice\AddressBook\Address_Book\AddressBook.json";
 
             foreach (KeyValuePair<string, List<NewMember>> kvp in addressbooknames)
             {
