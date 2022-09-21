@@ -1,4 +1,5 @@
-﻿using CsvHelper;
+﻿using Address_Book;
+using CsvHelper;
 using CsvHelper.Configuration;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 namespace Address_Book
 {
     class IOOperation
@@ -79,11 +81,7 @@ namespace Address_Book
                     {
                         HasHeaderRecord = false,
                     };
-
                 }
-
-
-
             }
             //Reads from CSV
             using (var reader = new StreamReader(export))
@@ -99,11 +97,7 @@ namespace Address_Book
                     }
                     Console.WriteLine(member.ToString());
                 }
-
             }
-
-
-
         }
     }
 }

@@ -239,7 +239,6 @@ namespace Address_Book
                 }
             }
         }
-
         public static void DisplayCount()
         {
             Console.WriteLine("The counts based on states and cities");
