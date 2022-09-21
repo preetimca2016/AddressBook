@@ -9,11 +9,11 @@ namespace Address_Book
     class AddressBook
     {
         public List<NewMember> contactList;
+
         public AddressBook()
         {
             contactList = new List<NewMember>();
         }
-        /// Adds the person.
         public bool AddaPerson()
         {
             bool found = false;
@@ -32,7 +32,7 @@ namespace Address_Book
             newMember.State = Console.ReadLine();
             Console.Write("Enter Pincode: ");
             newMember.PinCode = Console.ReadLine();
-            Console.Write("Enter Email Id: ");
+            contactList.Add(newMember);
             newMember.EmailId = Console.ReadLine();
             var name = newMember.FirstName.ToLower() + newMember.LastName.ToLower();
             if (contactList.Count == 0)
@@ -41,13 +41,10 @@ namespace Address_Book
             }
             else
             {
-                //Using lambda function to get firstname and lastname of the current contact
                 var firstname = contactList.Select(x => x.FirstName);
                 var lastname = contactList.Select(x => x.LastName);
-                //using for each along with Zip enumeration and create tuple to iterate with two list at the same time 
                 foreach (var members in firstname.Zip(lastname, Tuple.Create))
                 {
-                    //checks for duplicate and displays a error message.
                     if (members.Item1 == newMember.FirstName && members.Item2 == newMember.LastName)
                     {
                         found = true;
@@ -56,7 +53,7 @@ namespace Address_Book
                 }
                 if (found)
                 {
-                    Console.WriteLine("*******Already Exists Cant Add*******");
+                    Console.WriteLine("Already Exists Cant Add");
                 }
                 else
                 {
@@ -65,20 +62,18 @@ namespace Address_Book
             }
             return found;
         }
-        /// Prints the person.
         public void PrintPerson(NewMember member)
         {
             Console.WriteLine("First Name: " + member.FirstName);
             Console.WriteLine("Last Name: " + member.LastName);
             Console.WriteLine("Phone Number: " + member.PhoneNumber);
-            Console.WriteLine("Address " + member.Address);
+            Console.WriteLine("Address" + member.Address);
             Console.WriteLine("City: " + member.City);
             Console.WriteLine("State: " + member.State);
             Console.WriteLine("Pincode: " + member.PinCode);
             Console.WriteLine("Email Id: " + member.EmailId);
             Console.WriteLine("");
         }
-        /// Modifies the details.
         public void Modify()
         {
             if (contactList.Count > 0)
@@ -148,7 +143,6 @@ namespace Address_Book
                 Console.WriteLine("Your Address Book is empty!");
             }
         }
-        /// Deletes the details.
         public void DeleteDetails()
         {
             if (contactList.Count > 0)
@@ -170,7 +164,6 @@ namespace Address_Book
                 Console.WriteLine("Your Address book is empty!");
             }
         }
-        //to search based on city or state
         public static void Search(List<NewMember> list, string cityname, string state)
         {
             AddressBook addressbook = new AddressBook();
@@ -187,7 +180,6 @@ namespace Address_Book
                 Console.WriteLine("No contacts present");
             }
         }
-        /// Lists the contact people.
         public void ListContactPeople()
         {
             if (contactList.Count > 0)
